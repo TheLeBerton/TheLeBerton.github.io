@@ -1,0 +1,25 @@
+body {
+	background-color: #1a1100;
+	color: #ffb000;
+	font-family: monospace;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+	line-height: 1.6;
+}
+
+.prompt::before {
+	content: "$ ";
+}
+
+.prompt::after {
+	content: "█";
+	animation: prompt-anim 1s step-end infinite;
+}
+
+@keyframes prompt-anim {
+	0%, 50% { opacity: 1; }
+	51%, 100% { opacity: 0; }
+}
+
+
