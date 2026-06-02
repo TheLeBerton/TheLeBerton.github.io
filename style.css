@@ -1,27 +1,50 @@
+:root {
+	--bg: #1a1100;
+	--fg: #ffb000;
+	--dim: rgba(255, 176, 0, 0.5);
+	--scanline: rgba(0, 0, 0, 0.18);
+	--content-width: 800px;
+	--space: 2rem;
+	--blink-speed: 1.5s;
+}
+
 html {
 	scroll-snap-type: y mandatory;
 }
 
 body {
-	background-color: #1a1100;
-	color: #ffb000;
-	font-family: monospace;
-	max-width: 800px;
+	background-color: var(--bg);
+	color: var(--fg);
+	font-family: "JetBrains Mono", monospace;
+	max-width: var(--content-width);
 	margin: 0 auto;
-	padding: 2rem;
+	padding: var(--space);
 	line-height: 1.6;
 }
+
+body::after {                                                                                                                                                                                                                      
+	content: "";                                                                                                                                                                                                                 
+	position: fixed;                                                                                                                                                                                                             
+	inset: 0;                                                                                                                                                                                                                    
+	pointer-events: none;                                                                                                                                                                                                        
+	background: repeating-linear-gradient(                                                                                                                                                                                       
+			to bottom,                                                                                                                                                                                                           
+			rgba(0, 0, 0, 0) 0px,                                                                                                                                                                                                
+			rgba(0, 0, 0, 0) 2px,                                                                                                                                                                                                
+			var(--scanline) 3px                                                                                                                                                                                              
+	);                                                                                                                                                                                                                           
+}  
 
 section {
 	min-height: 100vh;
 	scroll-snap-align: start;
 }
 
-.prompt::before {
+.typing::before {
 	content: "$ ";
 }
 
-.prompt::after {
+.typing::after {
 	content: "█";
 	animation: prompt-anim 1s step-end infinite;
 }
@@ -32,3 +55,27 @@ section {
 }
 
 
+#hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 0.5rem;
+}
+
+.hint {
+	position: absolute;
+	bottom: var(--space);
+	right: var(--space);
+	color: var(--dim);
+	animation: prompt-anim var(--blink-speed) step-end infinite;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+	.typing::after,
+	.hint {
+		animation: none;
+	}
+}
