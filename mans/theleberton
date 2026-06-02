@@ -1,0 +1,16 @@
+THELEBERTON(1)                    Portfolio                    THELEBERTON(1)
+
+NAME
+       theleberton - 42 student
+
+SYNOPSIS
+       theleberton [--c] [--cpp] [--py]
+
+DESCRIPTION
+       Student at 42 Vienna. Loves low-level programming,
+       terminals, algorithms, maths and video games.
+
+SEE ALSO
+       cat about.txt, cat contact.txt
+
+theleberton                       June 2026                  THELEBERTON(1)

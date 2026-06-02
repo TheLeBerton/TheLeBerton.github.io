@@ -1,0 +1,16 @@
+PWD(1)                         User Commands                         PWD(1)
+
+NAME
+       pwd - print working directory
+
+SYNOPSIS
+       pwd
+
+DESCRIPTION
+       Print the full path of the current directory, starting
+       from the root (/).
+
+SEE ALSO
+       cd(1), ls(1)
+
+theleberton                       June 2026                         PWD(1)

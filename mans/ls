@@ -1,0 +1,22 @@
+LS(1)                          User Commands                          LS(1)
+
+NAME
+       ls - list directory contents
+
+SYNOPSIS
+       ls [PATH]
+
+DESCRIPTION
+       List the entries of the current directory, or of PATH when
+       one is given.
+
+       This is a simplified ls with no options. Directories are
+       shown with a trailing slash (/); files are shown by name.
+
+       If PATH points to a file, its name is printed. If PATH does
+       not exist, an error is shown.
+
+SEE ALSO
+       cd(1), cat(1), pwd(1), man(1)
+
+theleberton                       June 2026                          LS(1)

@@ -1,0 +1,16 @@
+HELP(1)                        User Commands                        HELP(1)
+
+NAME
+       help - list available commands
+
+SYNOPSIS
+       help
+
+DESCRIPTION
+       List every command available in this terminal, with a
+       one-line summary of each.
+
+SEE ALSO
+       man(1)
+
+theleberton                       June 2026                        HELP(1)

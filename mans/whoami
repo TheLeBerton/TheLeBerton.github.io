@@ -1,0 +1,16 @@
+WHOAMI(1)                      User Commands                      WHOAMI(1)
+
+NAME
+       whoami - print the current user
+
+SYNOPSIS
+       whoami
+
+DESCRIPTION
+       Print the username associated with this terminal
+       (leberton).
+
+SEE ALSO
+       man(1) theleberton
+
+theleberton                       June 2026                      WHOAMI(1)

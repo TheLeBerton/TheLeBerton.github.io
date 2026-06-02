@@ -46,6 +46,14 @@ export function initTerminal(rootSelector) {
 	// drop the leftover blinking cursor left by the intro typewriter
 	output.querySelectorAll(".typing").forEach((el) => el.classList.remove("typing"));
 
+	// keep about.txt in sync with the theleberton man page (single source of truth)
+	fetch("mans/theleberton")
+		.then((res) => res.text())
+		.then((text) => {
+			FS["about.txt"] = text.trimEnd().split("\n");
+		})
+		.catch(() => {});
+
 	let cwd = []; // path segments from the root
 
 	const isDir = (node) => node !== undefined && !Array.isArray(node);
@@ -122,13 +130,18 @@ export function initTerminal(rootSelector) {
 		return [`cat: ${arg}: no such file`];
 	}
 
-	function man(arg) {
-		if (!arg) return ["what manual page do you want?"];
-		if (arg.toLowerCase() === "theleberton") return ABOUT;
-		return [`No manual entry for ${arg}`];
+	async function man(arg) {
+		if (!arg) return print(["What manual page do you want?"]);
+		try {
+			const res = await fetch(`mans/${arg.toLowerCase()}`);
+			if (!res.ok) throw new Error();
+			print((await res.text()).trimEnd().split("\n"));
+		} catch {
+			print([`No manual entry for ${arg}`]);
+		}
 	}
 
-	function run(raw) {
+	async function run(raw) {
 		echo(raw);
 		const [cmd, arg] = raw.trim().split(/\s+/);
 		if (cmd === "") {
@@ -143,7 +156,7 @@ export function initTerminal(rootSelector) {
 		} else if (cmd === "pwd") {
 			print(["/" + cwd.join("/")]);
 		} else if (cmd === "man") {
-			print(man(arg));
+			await man(arg);
 		} else if (cmd === "whoami") {
 			print(["leberton"]);
 		} else if (cmd === "help") {

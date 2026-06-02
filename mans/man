@@ -1,0 +1,19 @@
+MAN(1)                         User Commands                         MAN(1)
+
+NAME
+       man - display a manual page
+
+SYNOPSIS
+       man PAGE
+
+DESCRIPTION
+       Display the manual page for a command (e.g. 'man ls') or
+       for 'theleberton'.
+
+       Manual pages are stored as plain files under mans/, one
+       per page.
+
+SEE ALSO
+       help(1), ls(1)
+
+theleberton                       June 2026                         MAN(1)

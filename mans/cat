@@ -1,0 +1,19 @@
+CAT(1)                         User Commands                         CAT(1)
+
+NAME
+       cat - print file contents
+
+SYNOPSIS
+       cat FILE
+
+DESCRIPTION
+       Print the contents of FILE to the terminal.
+
+       FILE may be a path such as 'projects/README.txt'. Trying
+       to read a directory or a file that does not exist shows
+       an error.
+
+SEE ALSO
+       ls(1), cd(1), man(1)
+
+theleberton                       June 2026                         CAT(1)

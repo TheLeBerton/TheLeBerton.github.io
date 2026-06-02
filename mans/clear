@@ -1,0 +1,15 @@
+CLEAR(1)                       User Commands                       CLEAR(1)
+
+NAME
+       clear - clear the terminal screen
+
+SYNOPSIS
+       clear
+
+DESCRIPTION
+       Remove all previous output from the terminal screen.
+
+SEE ALSO
+       help(1)
+
+theleberton                       June 2026                       CLEAR(1)

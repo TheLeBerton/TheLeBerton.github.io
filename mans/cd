@@ -1,0 +1,18 @@
+CD(1)                          User Commands                          CD(1)
+
+NAME
+       cd - change the current directory
+
+SYNOPSIS
+       cd [PATH]
+
+DESCRIPTION
+       Change the working directory to PATH.
+
+       Use '..' to go up one level, and '/' or '~' to return to
+       the root. PATH may be nested, e.g. 'cd projects'.
+
+SEE ALSO
+       ls(1), pwd(1), cat(1), man(1)
+
+theleberton                       June 2026                          CD(1)
