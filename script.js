@@ -10,3 +10,16 @@ const timer = setInterval(() => {
 		clearInterval(timer);
 	}
 }, 80 );
+
+
+const sections = document.querySelectorAll("section");
+let current = 0;
+
+document.addEventListener("keydown", (event) => {
+	if (event.key === "j" && current < sections.length - 1) {
+		current += 1
+	} else if (event.key === "k" && current > 0) {
+		current -= 1
+	}
+	sections[current].scrollIntoView({ behavior: "smooth" });
+});

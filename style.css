@@ -1,3 +1,7 @@
+html {
+	scroll-snap-type: y mandatory;
+}
+
 body {
 	background-color: #1a1100;
 	color: #ffb000;
@@ -6,6 +10,11 @@ body {
 	margin: 0 auto;
 	padding: 2rem;
 	line-height: 1.6;
+}
+
+section {
+	min-height: 100vh;
+	scroll-snap-align: start;
 }
 
 .prompt::before {
