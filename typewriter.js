@@ -1,4 +1,5 @@
-export function runTypewriter(selector, charDelayMs, onLineStart) {
+export function runTypewriter(selector, options = {}) {
+	const { charDelay = 80, onLineStart, onComplete } = options;
 	const lines = document.querySelectorAll(selector);
 	const texts = []
 	lines.forEach((el) => {
@@ -14,6 +15,8 @@ export function runTypewriter(selector, charDelayMs, onLineStart) {
 		if (lineIndex < lines.length) {
 			lines[lineIndex - 1].classList.remove("typing");
 			typeLine();
+		} else if (onComplete) {
+			onComplete();
 		}
 	}
 
@@ -35,7 +38,7 @@ export function runTypewriter(selector, charDelayMs, onLineStart) {
 				clearInterval(timer);
 				nextLine();
 			}
-		}, charDelayMs);
+		}, charDelay);
 	}
 
 	if (lines.length > 0) typeLine();
