@@ -1,5 +1,4 @@
 import { runTypewriter } from "./typewriter.js";
-import { initKeyboardNav } from "./nav.js";
 import { initTerminal, promptText } from "./terminal.js";
 
 const CHAR_DELAY_MS = 80;
@@ -15,5 +14,3 @@ runTypewriter("[data-typewriter]", {
 	onLineStart: showPrompt,
 	onComplete: () => initTerminal("#terminal"),
 });
-
-initKeyboardNav("section");
