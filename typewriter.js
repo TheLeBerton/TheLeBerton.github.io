@@ -1,4 +1,4 @@
-export function runTypewriter(selector, charDelayMs) {
+export function runTypewriter(selector, charDelayMs, onLineStart) {
 	const lines = document.querySelectorAll(selector);
 	const texts = []
 	lines.forEach((el) => {
@@ -21,6 +21,7 @@ export function runTypewriter(selector, charDelayMs) {
 		const el = lines[lineIndex];
 		const text = texts[lineIndex];
 		el.classList.add("typing");
+		if (onLineStart) onLineStart(el, lineIndex);
 		if (reduceMotion || text.length === 0) {
 			el.textContent = text;
 			nextLine();

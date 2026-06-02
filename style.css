@@ -3,6 +3,7 @@
 	--fg: #ffb000;
 	--dim: rgba(255, 176, 0, 0.5);
 	--scanline: rgba(0, 0, 0, 0.18);
+	--screen-bg: #000000;
 	--content-width: 800px;
 	--space: 2rem;
 	--blink-speed: 1.5s;
@@ -40,8 +41,22 @@ section {
 	scroll-snap-align: start;
 }
 
-.typing::before {
-	content: "$ ";
+.line {
+	display: flex;
+	align-items: baseline;
+}
+
+.line h1,
+.line p {
+	margin: 0;
+	font-size: inherit;
+	font-weight: normal;
+}
+
+.ps1 {
+	color: var(--dim);
+	margin-right: 0.5ch;
+	white-space: pre;
 }
 
 .typing::after {
@@ -56,11 +71,14 @@ section {
 
 
 #hero {
+	width: 100vw;
+	position: relative;
+	left: 50%;
+	margin-left: -50vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
 	gap: 0.5rem;
 }
 
@@ -78,4 +96,23 @@ section {
 	.hint {
 		animation: none;
 	}
+}
+
+.screen {
+	box-sizing: border-box;
+	width: min(1300px, 92vw);
+	height: min(750px, 85vh);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	text-align: left;
+	font-size: 1.2rem;
+	background-color: var(--screen-bg);
+	border: 2px solid var(--fg);
+	border-radius: 12px;
+	padding: 2.5rem 3rem;
+	box-shadow: 
+		0 0 30px rgba(255, 176, 0, 0.25),
+		inset 0 0 50px rgba(255, 176, 0, 0.06);
 }
