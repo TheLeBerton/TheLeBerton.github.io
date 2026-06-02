@@ -1,9 +1,19 @@
+// Shared "about" content, shown by both `cat about.txt` and `man theleberton`.
+const ABOUT = [
+	"NAME",
+	"     leberton — 42 student",
+	"",
+	"SYNOPSIS",
+	"     leberton [--c] [--cpp] [--py]",
+	"",
+	"DESCRIPTION",
+	"     Student at 42 Vienna. Loves low-level, terminals,",
+	"     algorithms, maths and video games.",
+];
+
 // Virtual filesystem: arrays = files (lines of text), objects = directories.
 const FS = {
-	"about.txt": [
-		"leberton — 42 student.",
-		"Loves low-level, terminals, algorithms, maths and video games.",
-	],
+	"about.txt": ABOUT,
 	"contact.txt": [
 		"email    leonardo.bertonasco01@gmail.com",
 		"github   github.com/TheLeBerton",
@@ -111,6 +121,12 @@ export function initTerminal(rootSelector) {
 		return [`cat: ${arg}: no such file`];
 	}
 
+	function man(arg) {
+		if (!arg) return ["what manual page do you want?"];
+		if (arg.toLowerCase() === "theleberton") return ABOUT;
+		return [`No manual entry for ${arg}`];
+	}
+
 	function run(raw) {
 		echo(raw);
 		const [cmd, arg] = raw.trim().split(/\s+/);
@@ -126,6 +142,8 @@ export function initTerminal(rootSelector) {
 			print(cat(arg));
 		} else if (cmd === "pwd") {
 			print(["/" + cwd.join("/")]);
+		} else if (cmd === "man") {
+			print(man(arg));
 		} else if (cmd === "whoami") {
 			print(["leberton"]);
 		} else if (cmd === "help") {
@@ -134,6 +152,7 @@ export function initTerminal(rootSelector) {
 				"  ls            list files in the current directory",
 				"  cd <dir>      change directory ('cd ..' to go up)",
 				"  cat <file>    print a file's contents",
+				"  man <name>    show a manual page",
 				"  pwd           print the current path",
 				"  whoami        my username",
 				"  clear         clear the screen",
